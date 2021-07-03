@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-hugo -D --minify -d "$1"
+hugo -D -d "$1"

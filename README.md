@@ -12,10 +12,19 @@
 
 You need to set the variables in `config/.env`.
 
+```sh
+DOCKER_IMAGE=
+CERT_DIRECTORY=
+```
+
 ## Usage
 
+Inside your hugo static site project execute following:
+
 ```sh
-docker pull alexheld/static-site-base
+git submodule add https://github.com/alex-held/static-site-container .static-site-container
+git submodule update --init
+./.static-site-container/scripts/init_submodule.sh
 ```
 
 ## Author

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e pipefail
 
-source config/.env
+source .env
 export TAG=$(git describe --tags)
 export DOCKER_IMAGE=$DOCKER_IMAGE
 export HTTP_PORT=$HTTP_PORT
