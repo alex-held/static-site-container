@@ -1,12 +1,10 @@
-FROM klakegg/hugo as builder
+FROM klakegg/hugo:alpine as builder
 EXPOSE 80
 EXPOSE 443
 
-ADD . /app/src
+COPY . /app/src
 WORKDIR /app/src
-RUN ./scripts/build.sh /app/public
-
-
+RUN hugo -D -d /app/public
 
 FROM nginx
 LABEL maintainer="dev@alexheld.io"
