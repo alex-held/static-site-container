@@ -2,11 +2,14 @@
 set -e pipefail
 
 source config/.env
-TAG="$(git describe --tags)"
+export TAG=$(git describe --tags)
+export DOCKER_IMAGE=$DOCKER_IMAGE
+export HTTP_PORT=$HTTP_PORT
+export HTTPS_PORT=$HTTPS_PORT
 
-echo "TAG:                   $TAG"
-echo "DOCKER_IMAGE:          $DOCKER_IMAGE"
-echo "HTTP_PORT:             $HTTP_PORT"
-echo "HTTPS_PORT:             $HTTPS_PORT"
+docker-compose -f docker-compose.prod.yml up -d
 
-# docker-compose -f docker-compose.prod.yml up
+unset TAG
+unset DOCKER_IMAGE
+unset HTTP_PORT
+unset HTTPS_PORT
